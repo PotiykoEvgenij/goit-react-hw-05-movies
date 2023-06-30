@@ -1,16 +1,30 @@
+import { useEffect, useState } from "react";
+import MovieAPI from "components/Api";
+import { MoviesList } from "components/MoviesList";
+
 const Home = () => {
-    return (
-        <main>
-            <h1>Trending today</h1>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-            </ul>
-        </main>
-    );
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const movieAPI = new MovieAPI('a2eec4063d87f4e8e5e4230e87b07946');
+        const trendingMovies = await movieAPI.getTrendingMovies();
+        setMovies(trendingMovies);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
+  return (
+    <main>
+      <h1>Trending today</h1>
+      <MoviesList movies={movies} />
+    </main>
+  );
 };
 
 export default Home;

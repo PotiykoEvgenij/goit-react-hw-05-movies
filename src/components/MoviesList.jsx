@@ -1,18 +1,33 @@
-import { Link, useLocation, useLovation } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 
 export const MoviesList = ({ movies }) => {
-    const location = useLocation();
+  const location = useLocation();
 
-    return (
-        <div>
-            {movies.map((movie) => (
-                <div key={movie.id}>
-                    <Link to={`movies.id`} state={{ from: location }}>
-                        <img src="#" alt="" />
-                        <h2>{movie.name}</h2>
-                    </Link>
-                </div>
-            ))}
-        </div>
-    );
+  return (
+    <ul>
+      {movies.map((movie) => (
+        <li key={movie.id}>
+          <Link to={`/movies/${movie.id}`} state={{ movieId: movie.id, from: location }}>
+            <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt={movie.title} />
+            <h2>{movie.original_title}</h2>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
 };
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      original_title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+export default MoviesList;

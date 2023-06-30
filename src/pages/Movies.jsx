@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { MoviesList } from "components/MoviesList";
 import { SearchBox } from "components/SearchBox";
+import { getTrending } from "components/Api";
 
 const Movies = () => {
+    // const movies = getTrending();
     return (
         <main>
             <SearchBox />
