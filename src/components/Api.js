@@ -16,7 +16,6 @@ export default class MovieAPI {
     };
 
     const response = await axios.get(url, config);
-    console.log(response.data.results);
     return response.data.results;
   }
 

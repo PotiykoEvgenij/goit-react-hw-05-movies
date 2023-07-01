@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import MovieAPI from 'components/Api';
+import { useParams } from 'react-router-dom';
 
-const Cast = ({ movieId }) => {
+const Cast = () => {
+  const { movieId } = useParams();
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
