@@ -5,6 +5,10 @@ import { Link, useLocation } from 'react-router-dom';
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
 
+  if (!movies) {
+    return null;
+  }
+
   return (
     <ul>
       {movies.map((movie) => (
