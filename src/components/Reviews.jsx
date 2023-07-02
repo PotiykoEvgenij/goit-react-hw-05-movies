@@ -13,7 +13,6 @@ const Reviews = () => {
       try {
         const movieAPI = new MovieAPI('a2eec4063d87f4e8e5e4230e87b07946');
         const reviews = await movieAPI.getMovieReviews(movieId);
-        console.log(reviews)
         setReviews(reviews);
       } catch (error) {
         console.error(error);
@@ -22,11 +21,9 @@ const Reviews = () => {
 
     fetchMovieReviews();
   }, [movieId]);
-  console.log(movieId)
   if (reviews.length === 0) {
     return <div>We don't have reviews for this movie.</div>;
   }
-  console.log(movieId)
   return (
     <div>
       <h3>Reviews</h3>

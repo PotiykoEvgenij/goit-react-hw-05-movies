@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const Genres = ({ genres }) => {
     return (
@@ -10,4 +11,8 @@ export const Genres = ({ genres }) => {
             ))}
         </div>
     );
+};
+
+Genres.propTypes = {
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

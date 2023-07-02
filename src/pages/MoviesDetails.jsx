@@ -9,7 +9,6 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [genres, setGenres] = useState([]);
-  // const [reviews, setReviews] = useState([]);
   const [userScorePercentage, setUserScorePercentage] = useState(0);
 
   useEffect(() => {
@@ -18,10 +17,8 @@ const MovieDetails = () => {
         const movieAPI = new MovieAPI('a2eec4063d87f4e8e5e4230e87b07946');
         const details = await movieAPI.getMovieDetails(movieId);
         const genreNames = details.genres.map((genre) => genre.name);
-        // const reviews = await movieAPI.getMovieReviews(movieId);
         setMovieDetails(details);
         setGenres(genreNames);
-        // setReviews(reviews);
         setUserScorePercentage(Math.round(details.vote_average * 10));
       } catch (error) {
         console.error(error);
