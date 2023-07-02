@@ -1,44 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { MoviesList } from "components/MoviesList";
+import React, { useState } from "react";
 import { SearchBox } from "components/SearchBox";
-import MovieAPI from 'components/Api';
+import { MoviesList } from "../components/MoviesList";
+import MovieAPI from "../components/Api";
+
+const movieAPI = new MovieAPI('a2eec4063d87f4e8e5e4230e87b07946');
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const movieAPI = new MovieAPI('a2eec4063d87f4e8e5e4230e87b07946');
-          const searchResults = await movieAPI.searchMovies(searchQuery);
-          console.log(searchResults.results);
-          setMovies(searchResults.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    if (searchQuery) {
-      fetchData();
-    } else {
-      setMovies([]);
-    }
-  }, [searchQuery]);
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    setSearchParams({ query });
+  const searchMovies = async (query) => {
+    const searchResults = await movieAPI.searchMovies(query);
+    setMovies(searchResults);
   };
-
-    console.log(movies);
   return (
-    <main>
-      <SearchBox value={searchQuery} onChange={handleSearch} onSubmit={handleSearch} />
+    <div>
+      <SearchBox onSearch={searchMovies} />
       <MoviesList movies={movies} />
-    </main>
+    </div>
   );
 };
 
