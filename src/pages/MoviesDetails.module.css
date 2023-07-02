@@ -1,0 +1,24 @@
+.movieDetails {
+    margin: 20px;
+    border-bottom: 1px solid #3f3f3f;
+}
+
+.linkBack {
+    width: 100%;
+}
+
+.movieWrapper {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #3f3f3f;
+}
+
+.movieImg {
+    width: 185px;
+}
+
+.movieInfo {
+    margin-left: 20px;
+}

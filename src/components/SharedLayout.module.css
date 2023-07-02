@@ -1,0 +1,21 @@
+.navBord {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    background-color: antiquewhite;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.navLink {
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navText {
+    padding: 10px;
+    background-color: orange;
+    border-radius: 10px;
+    color: black;
+}

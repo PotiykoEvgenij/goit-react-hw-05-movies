@@ -1,0 +1,19 @@
+.searchBox {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}
+
+.searchInput {
+    padding: 10px;
+    width: 120px;
+    background-color: antiquewhite;
+    border-style: none;
+}
+
+.searchButton {
+    margin-left: 10px;
+    border-style: none;
+    background-color: orange;
+    border-radius: 10px;
+}

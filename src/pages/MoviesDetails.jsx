@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation, Outlet, useParams } from 'react-router-dom';
 import MovieAPI from 'components/Api';
 import { Genres } from 'components/Genres';
-// import { AdditionalInformation } from 'components/AdditionalInformation';
+import styles from './MoviesDetails.module.css';
 
 const MovieDetails = () => {
   const location = useLocation();
@@ -35,16 +35,20 @@ const MovieDetails = () => {
   }
 
   return (
-    <div>
-      <Link to={location.state?.from}>Go back</Link>
-      <img src={`https://image.tmdb.org/t/p/w185/${movieDetails.poster_path}`} alt={movieDetails.title} />
-      <h1>{movieDetails.title} ({movieDetails.release_date.slice(0, 4)})</h1>
-      <p>User score: {userScorePercentage}%</p>
-      <h2>Overview</h2>
-      <p>{movieDetails.overview}</p>
-      <h2>Genres</h2>
-      <Genres genres={genres} />
-      <h2>Additional Information</h2>
+    <div className={styles.movieDetails}>
+      <Link className={styles.linkBack} to={location.state?.from}>← Go back</Link>
+      <div className={styles.movieWrapper}>
+        <img className={styles.movieImg} src={`https://image.tmdb.org/t/p/w185/${movieDetails.poster_path}`} alt={movieDetails.title} />
+        <div className={styles.movieInfo}>
+          <h1 className={styles.movieTitle}>{movieDetails.title} ({movieDetails.release_date.slice(0, 4)})</h1>
+          <p className={styles.movietext}>User score: {userScorePercentage}%</p>
+          <h2 className={styles.movieTitleInfo}>Overview</h2>
+          <p className={styles.moviemovietext}>{movieDetails.overview}</p>
+          <h2 className={styles.movieTitleInfo}>Genres</h2>
+          <Genres genres={genres} />
+        </div>
+      </div>
+      <h2 className={styles.movieAdditional}>Additional Information</h2>
       <ul>
         <li>
           <Link to="cast">Cast</Link>

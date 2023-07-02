@@ -1,0 +1,13 @@
+.moviesList {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movieCard {
+    width: 200px;
+}
+
+.moviesTitle {
+    width: 185px;
+}

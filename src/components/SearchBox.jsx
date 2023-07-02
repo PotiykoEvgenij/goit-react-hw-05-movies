@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import PropTypes from 'prop-types';
+import styles from './SearchBox.module.css'
 
 export const SearchBox = ({ onSearch }) => {
     const [query, setQuery] = useState('');
@@ -19,13 +20,15 @@ export const SearchBox = ({ onSearch }) => {
     }; 
 
     return (
-        <div>
+        <div className={styles.searchBox}>
             <input
+                className={styles.searchInput}
+                placeholder="Search for a movie"
                 type="text"
                 value={query}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown} />
-          <button onClick={handleSearch}>Search</button>
+          <button className={styles.searchButton} onClick={handleSearch}>Search</button>
         </div>
     );
 };
